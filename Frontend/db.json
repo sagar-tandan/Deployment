@@ -1,0 +1,92 @@
+{
+  "employees": [
+    {
+      "id": "2a00",
+      "name": "ABC",
+      "email": "abc@gmail.com",
+      "department": "marketing",
+      "designation": "senior",
+      "userType": "manager",
+      "salary": "121345",
+      "password": "pass@123",
+      "date": "2025-07-06"
+    },
+    {
+      "id": "4860",
+      "name": "newemp",
+      "email": "newemp@gmail.com",
+      "department": "marketing",
+      "designation": "midlevel",
+      "userType": "manager",
+      "salary": "123406",
+      "password": "pass@123",
+      "date": "2025-07-07"
+    },
+    {
+      "id": "7841",
+      "name": "MynewEMp",
+      "email": "mynewemp@gmail.com",
+      "department": "engineering",
+      "designation": "junior",
+      "userType": "employee",
+      "salary": "12121",
+      "password": "pass@123",
+      "date": "2025-07-07"
+    },
+    {
+      "name": "mynewwemp",
+      "email": "mynewemp@gmail.com",
+      "department": "sales",
+      "designation": "midlevel",
+      "userType": "manager",
+      "salary": "1212322",
+      "password": "pass@123",
+      "date": "2025-07-10",
+      "id": "e05f"
+    },
+    {
+      "name": "mynewemp",
+      "email": "mynewemp@gmail.com",
+      "department": "sales",
+      "designation": "midlevel",
+      "userType": "manager",
+      "salary": "12121",
+      "password": "1212",
+      "date": "2025-07-10",
+      "id": "ed1e"
+    },
+    {
+      "name": "Admin User",
+      "email": "eve.holt@reqres.in",
+      "department": "admin",
+      "designation": "senior",
+      "userType": "manager",
+      "salary": "100000",
+      "password": "cityslicka",
+      "date": "2025-07-13",
+      "id": "9999"
+    },
+    {
+      "id": "7825",
+      "name": "demouser",
+      "email": "demouser@gmail.com",
+      "department": "sales",
+      "designation": "midlevel",
+      "userType": "employee",
+      "salary": "1212",
+      "password": "pass@123",
+      "date": "2025-07-13"
+    },
+    {
+      "id": "0a42",
+      "name": "adminuser",
+      "email": "adminuser@gmail.com",
+      "department": "marketing",
+      "designation": "senior",
+      "userType": "hr",
+      "salary": "123412",
+      "password": "pass@123",
+      "date": "2025-07-13"
+    }
+  ]
+}
