@@ -4,8 +4,10 @@ import mongoose from "mongoose"; // Importing mongoose
 import dotenv from "dotenv"; // importing dotenv
 import {
   createEmployee,
+  deleteEmployee,
   getAllEmployes,
   getEmployeeById,
+  updateEmployee,
 } from "./controllers/employee.controller.js";
 
 dotenv.config(); // Configuring .env file
@@ -22,11 +24,12 @@ app.get("/", (req, res) => {
   res.status(200).json({ message: "Welcome to Nodejs!" });
 });
 
-
-// Employee ko Routes 
+// Employee ko Routes
 app.post("/employee/create", createEmployee);
 app.get("/employee/getAllEmployee", getAllEmployes);
 app.get("/employee/getAllEmployee/:id", getEmployeeById);
+app.put("/employee/update/:id", updateEmployee);
+app.delete("/employee/delete/:id", deleteEmployee);
 
 // Database Connection
 mongoose
