@@ -2,6 +2,7 @@ import express from "express";
 import morgan from "morgan";
 import mongoose from "mongoose"; // Importing mongoose
 import dotenv from "dotenv"; // importing dotenv
+import cors from "cors";
 import {
   createEmployee,
   deleteEmployee,
@@ -9,15 +10,18 @@ import {
   getEmployeeById,
   updateEmployee,
 } from "./controllers/employee.controller.js";
+import { loginEmployee } from "./controllers/auth.controller.js";
+import { authorizeToken } from "./middleware/auth.middleware.js";
 
 dotenv.config(); // Configuring .env file
 
 const app = express();
 const PORT = process.env.PORT;
 
-// For logging
+// Middlewares
 app.use(morgan("dev"));
 app.use(express.json());
+app.use(cors()); // Cors Middleware
 
 // Creating Route
 app.get("/", (req, res) => {
@@ -25,11 +29,18 @@ app.get("/", (req, res) => {
 });
 
 // Employee ko Routes
-app.post("/employee/create", createEmployee);
-app.get("/employee/getAllEmployee", getAllEmployes);
-app.get("/employee/getAllEmployee/:id", getEmployeeById);
-app.put("/employee/update/:id", updateEmployee);
-app.delete("/employee/delete/:id", deleteEmployee);
+app.post("/employee", authorizeToken, createEmployee);
+app.get("/employee", authorizeToken, getAllEmployes);
+app.get("/employee/:id", getEmployeeById);
+app.put("/employee/:id", updateEmployee);
+app.delete("/employee/:id", authorizeToken, deleteEmployee);
+
+app.post("/auth", loginEmployee);
+
+// Route to verify Token
+app.get("/", authorizeToken, () => {
+  res.status(200).json({ message: "Token Verified." });
+});
 
 // Database Connection
 mongoose
@@ -43,3 +54,6 @@ mongoose
   .catch((err) => {
     console.log("❌ Datbase connection Failed.", err);
   });
+
+// Backend ---> Create a folder named "middleware"
+// Then create a file "auth.middleware.js" inside middleware folder
