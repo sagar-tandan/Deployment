@@ -23,7 +23,7 @@ export function authorizeToken(req, res, next) {
     next();
   } catch (error) {
     // If token unverified, send error response
-    console.log("Eroor verifying token:", error);
+    console.log("Error verifying token:", error);
     res.status(400).json({ message: "Invalid token" });
   }
 }

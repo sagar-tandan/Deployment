@@ -12,11 +12,12 @@ export default function Employee() {
   const fetchEmployees = async () => {
     const token = localStorage.getItem("token");
     try {
-      const res = await axios.get("http://localhost:5000/employees", {
+      const res = await axios.get("http://localhost:8000/employee", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
+      console.log(res);
       setEmployees(res.data);
     } catch (err) {
       console.error("Failed to fetch employees", err);
@@ -30,7 +31,7 @@ export default function Employee() {
     if (!confirmDelete) return;
     const token = localStorage.getItem("token");
     try {
-      await axios.delete(`http://localhost:5000/employees/${id}`, {
+      await axios.delete(`http://localhost:8000/employee/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

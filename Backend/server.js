@@ -23,9 +23,9 @@ app.use(morgan("dev"));
 app.use(express.json());
 app.use(cors()); // Cors Middleware
 
-// Creating Route
-app.get("/", (req, res) => {
-  res.status(200).json({ message: "Welcome to Nodejs!" });
+// Route to verify Token
+app.get("/", authorizeToken, (req, res) => {
+  res.status(200).json({ message: "Token Verified." });
 });
 
 // Employee ko Routes
@@ -36,11 +36,6 @@ app.put("/employee/:id", updateEmployee);
 app.delete("/employee/:id", authorizeToken, deleteEmployee);
 
 app.post("/auth", loginEmployee);
-
-// Route to verify Token
-app.get("/", authorizeToken, () => {
-  res.status(200).json({ message: "Token Verified." });
-});
 
 // Database Connection
 mongoose
