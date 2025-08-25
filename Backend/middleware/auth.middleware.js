@@ -14,16 +14,20 @@ export function authorizeToken(req, res, next) {
   try {
     // 4. Verify the token
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    // 5. if verified, check Roles
-    const { userType } = decoded;
-    if (userType.toLowerCase() === "employee") {
-      return res.status(400).json({ message: "Access Denied." });
-    }
-
+    req.user = decoded;
     next();
   } catch (error) {
     // If token unverified, send error response
     console.log("Error verifying token:", error);
     res.status(400).json({ message: "Invalid token" });
   }
+}
+
+export function checkRole(req, res, next) {
+  const user = req.user;
+  const { userType } = user;
+  if (userType.toLowerCase() === "employee") {
+    return res.status(400).json({ message: "Access Denied." });
+  }
+  next();
 }

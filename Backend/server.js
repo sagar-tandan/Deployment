@@ -11,7 +11,7 @@ import {
   updateEmployee,
 } from "./controllers/employee.controller.js";
 import { loginEmployee } from "./controllers/auth.controller.js";
-import { authorizeToken } from "./middleware/auth.middleware.js";
+import { authorizeToken, checkRole } from "./middleware/auth.middleware.js";
 
 dotenv.config(); // Configuring .env file
 
@@ -29,8 +29,8 @@ app.get("/", authorizeToken, (req, res) => {
 });
 
 // Employee ko Routes
-app.post("/employee", authorizeToken, createEmployee);
-app.get("/employee", authorizeToken, getAllEmployes);
+app.post("/employee", authorizeToken, checkRole, createEmployee);
+app.get("/employee", authorizeToken, checkRole, getAllEmployes);
 app.get("/employee/:id", getEmployeeById);
 app.put("/employee/:id", updateEmployee);
 app.delete("/employee/:id", authorizeToken, deleteEmployee);
